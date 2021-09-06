@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Hello world</h1>
+    
+    <p>Bonjour {{ name }} vous avez {{ age }} ans.</p>
+    
+    {% if age >= 18 %}
+        <p>Vous êtes majeur</p>
+    {% else %}
+        <p>Vous êtes mineur</p>
+    {% endif %}
+    
+    <section>
+        <h2>Liste des amis</h2>
+        
+        <p>Vous avez {{ friends|length }} ami(s)</p>
+        
+        <ul>
+            {% for friend in friends %}
+                <li>
+                    {{ friend.firstname }} {{ friend.lastname|upper }} - {{ friend.birthdate|date('d/m/Y') }}
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
+
+{% block title %}
+    Hello
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Liste des articles du blog</h1>
+
+    <ul class="list-unstyled">
+        {% for post in posts %}
+            <li>
+                <article class="my-3">
+                    <header class="mb-2">
+                        <h2><a href="{{ path('posts.show', {id: post.id}) }}">{{ post.title }}</a></h2>
+                        <small>Rédigé par {{ post.firstname }} {{ post.lastname }} le {{ post.creation_date|date('d/m/Y') }}</small>
+                    </header>
+                    {{ post.content|slice(0, 200) }}[...] (<a href="#">Lire la suite</a>)
+                </article>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
